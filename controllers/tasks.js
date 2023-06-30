@@ -12,7 +12,7 @@ const getAllTasks = async (req,res) =>{
 const createTask = async (req,res) =>{
     try {
         const task = await Task.create(req.body)
-        res.status(201).json({task})
+        res.status(200).json({task})
     } catch (error) {
         res.status(500).json({msg:error})
     }
@@ -41,8 +41,6 @@ const deleteTask = async (req,res) =>{
             return res.status(404).json({"msg":'No task with ID:' + req.params.id})
         }
         res.status(200).json({task})
-        // res.status(200).json({task: null,status: 'success'})
-        // res.status(200).send()
     } catch (error) {
         res.status(500).json({msg:error})
     }
