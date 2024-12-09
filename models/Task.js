@@ -1,11 +1,7 @@
 const mongoose = require('mongoose')
 
-
 // Schema is used we'll setup the structure for all the documents that we'll eventually have in our collection
 const TaskSchema = new mongoose.Schema({
-    // name:String,
-    // completed:Boolean
-
     name: {
         type:String,
         required:[true,'must provide name'],

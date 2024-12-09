@@ -1,21 +1,17 @@
 const express = require('express')
-const app = express()
+const app = express()       // initialize
 const tasks = require('./routes/tasks')
 const connectDB = require('./db/connect.js')
 require('dotenv').config()
+const notFound = require('./middleware/not-found')
 
 //middleware
 app.use(express.static('./public'))
-app.use(express.json())
+app.use(express.json())     // this stores data in res.body
 
 // routes
 app.use('/api/v1/tasks',tasks)
-        // app.get('/hello',(req,res)=>{
-        //     res.send('Task Manager App')
-        // })
-
-
-
+app.use(notFound)   // handles unknown url
 
 // app.get('/api/v1/tasks')           - get all the tasks
 // app.post('/api/v1/tasks')          - create a new task 
